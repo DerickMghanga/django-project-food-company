@@ -2,21 +2,28 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.http import HttpResponse
-from datetime import datetime
+from django.shortcuts import render
 
+
+# create your views here.
 def home(request):
-    return HttpResponse("Welcome to the Little Lemon Restaurant !")
+    path = request.path
+    scheme = request.scheme
+    method = request.method
+    address = request.META['REMOTE_ADDR']
+    user_agent = request.META['HTTP_USER_AGENT']
+    path_info = request.path_info
 
-def say_hello(request):
-    return HttpResponse("Hello there")
-
-def little_lemon(request):
-    return HttpResponse("Best restaurant in Nairobi")
-
-def display_date(request):
-    date_joined = datetime.today().year
-    return HttpResponse(date_joined)
-
-def menu(request):
-    text = """<h1 style="color: #F4CE14">This is Little lemon again</h1>"""
-    return HttpResponse(text)
+    response = HttpResponse()
+    response.headers['Age'] = 20
+    
+    msg = f"""<br>
+        <br>Path: {path}
+        <br>Address: {address}
+        <br>Scheme: {scheme}
+        <br>Method: {method}
+        <br>User agent: {user_agent}
+        <br>Path Info: {path_info}
+        <br>Response header: {response.headers}
+    """
+    return HttpResponse(msg, content_type='text/html', charset='utf-8')
