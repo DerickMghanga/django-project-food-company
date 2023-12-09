@@ -27,3 +27,15 @@ def home(request):
         <br>Response header: {response.headers}
     """
     return HttpResponse(msg, content_type='text/html', charset='utf-8')
+
+def menuitems(request, dish):
+    items = {
+        'pasta': 'Pasta is type of noddle',
+        'falafel': 'These are deep fried patties',
+        'cheesecake': 'Is a type of dessert made of cream, soft cheese on top of cookie',
+    }
+
+    # Url parameter(dish) passed is matched to the below function
+    description = items[dish]
+
+    return HttpResponse(f"<h2>{dish}</h2>" + description)
