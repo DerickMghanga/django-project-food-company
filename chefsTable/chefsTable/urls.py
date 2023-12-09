@@ -17,8 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from . import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('myapp.urls')),
+    path('lemon', views.lemon),
 ]
+
+# handles pages not found errors from views.py(project)
+handler404 = 'chefsTable.views.handler404'

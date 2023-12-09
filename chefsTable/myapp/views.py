@@ -37,5 +37,5 @@ def menuitems(request, dish):
 
     # Url parameter(dish) passed is matched to the below function
     description = items[dish]
-
+    
     return HttpResponse(f"<h2>{dish}</h2>" + description)
