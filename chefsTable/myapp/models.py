@@ -9,3 +9,9 @@ class Menu(models.Model):
 
     def __str__(self):
         return self.name + " : " + self.cuisine
+    
+    
+class MenuItems(models.Model):
+    itemname = models.CharField(max_length=200)
+    category = models.CharField(max_length=200)
+    year = models.IntegerField()
