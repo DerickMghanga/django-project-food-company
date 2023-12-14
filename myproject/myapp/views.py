@@ -7,13 +7,10 @@ def home(request):
     return render(request, 'index.html')
 
 def menu(request):
-    newmenu = {'mains': [
-        {'name': 'falafel', 'price': '12'},
-        {'name': 'gyro', 'price': '10'},
-        {'name': 'shawarma', 'price': '15'},
-        {'name': 'humus', 'price': '5'},
-    ]}
-    return render(request, 'menu.html', newmenu)
+    return render(request, 'menu.html')
+
+def about(request):
+    return render(request, 'about.html')
     
 
 def menu_by_id(request):
